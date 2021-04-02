@@ -1,0 +1,80 @@
+require:
+  - rubocop-rails
+
+AllCops:
+  Exclude:
+    - 'db/migrate/20190411085216_add_initial_schema.rb'
+    - 'db/migrate/20190506070720_add_dynamic_fields_to_tbl_order.rb'
+    - 'db/migrate/20190506070228_change_column_size_for_tbl_order.rb'
+    - 'db/migrate/20190724105448_drop_tbl_flax_r_wpd.rb'
+    - 'db/migrate/20201006052323_create_doorkeeper_tables.rb'
+    - 'db/*schema*.rb'
+    - 'vendor/**/*'
+    - 'lib/tasks/temp.rake'
+    - 'lib/tasks/catalogue.rake'
+    - 'node_modules/**/*'
+    - 'spec/fixtures/**/*'
+    - 'tmp/**/*'
+    - 'lib/tasks/cucumber.rake'
+    - 'bin/**/*'
+  TargetRubyVersion: 2.6
+
+Rails:
+  Enabled: true
+  Exclude:
+    - 'db/seeders/*.rb'
+
+Rails/HasAndBelongsToMany:
+  Enabled: false
+Rails/RakeEnvironment:
+  Exclude:
+    - 'lib/capistrano/tasks/*.rake'
+
+# Layout Cops
+Layout/LineLength:
+  Max: 120
+
+# Style Cops
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: always
+  Enabled: false
+Style/HashEachMethods:
+  Enabled: true
+Style/HashTransformKeys:
+  Enabled: true
+Style/HashTransformValues:
+  Enabled: true
+
+##################### Metrics ##################################
+Metrics/AbcSize:
+  # The ABC size is a calculated magnitude, so this number can be a Fixnum or
+  # a Float.
+  Max: 30
+Metrics/BlockNesting:
+  Max: 3
+Metrics/ClassLength:
+  CountComments: false  # count full line comments?
+  Max: 200
+Metrics/ModuleLength:
+  CountComments: false  # count full line comments?
+  Max: 200
+# Avoid complex methods.
+Metrics/CyclomaticComplexity:
+  Max: 6
+Metrics/MethodLength:
+  CountComments: false  # count full line comments?
+  Max: 25
+Metrics/BlockLength:
+  Max: 25
+  ExcludedMethods: ['describe', 'context', 'included', 'aasm']
+  Exclude:
+    - "config/environments/*.rb"
+    - "config/routes.rb"
+    - "config/deploy.rb"
+    - 'spec/factories/**/*'
+    - 'lib/tasks/*'
+Metrics/ParameterLists:
+  Max: 5
+  CountKeywordArgs: true
+Metrics/PerceivedComplexity:
+  Max: 7
