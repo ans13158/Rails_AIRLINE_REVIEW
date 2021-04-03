@@ -9,7 +9,7 @@ module Api
         options = {}
         options[:include] = %i[reviews]
         options[:fields] = {
-          airline: %i[name slug avg_review review_count image_url],
+          airline: %i[name slug avg_review review_count image_url reviews],
           review: %i[title review_text score]
         }
         render json: AirlineSerializer.new(airlines, options), status: :ok
